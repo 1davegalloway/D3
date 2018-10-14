@@ -95,7 +95,9 @@ var scatter = svg.selectAll("circles")
             .append("circle")
             .attr("cx", d => xScale( d[xView] ))
             .attr("cy", d => yScale( d[yView] ))
-            .attr("r", 10);
+            .attr("r", 10)
+            .style("fill", "orange")
+            .attr("opacity", ".4");
 
 
 // data[xView] is the scale that will be 
