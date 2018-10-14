@@ -102,7 +102,19 @@ var scatter = svg.selectAll("circles")
     // updated on click. You will need to update the bubbles with:
 
     //Text for state abbr      
+  circles.append('text')
+  .attr("x", function(d, poverty) {
+      return x(+d[xView]- 0.08);
+  })
+  .attr("y", function(d, obesity ) {
+      return y(d.yView - 0.2);  //Trial and error so far...
+  })
 
+  .attr("text-anchor", "middle")
+  .text(function(d){
+      return d.abbr;})
+  .attr('fill', 'white')
+  .attr('font-size', 9);
 
 //Event Handlers
 circlesGroup.on("mouseover", function(d, i) {
@@ -112,11 +124,6 @@ circlesGroup.on("mouseover", function(d, i) {
     .style("top", d3.event.pageY + "px");
 })
   //Add an onmouseout event to make the tooltip invisible
-  .on("mouseover", function() {
-    toolTip.style("display", "Poverty and Obesity") //How do I link this data percentage to this toolTip?
-  })
-  
-  
   .on("mouseout", function() {
     toolTip.style("display", "none");
   });
